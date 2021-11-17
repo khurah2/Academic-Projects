@@ -1,0 +1,126 @@
+#  CS 1XA3 Project03 - khurah2
+
+## Usage
+  Install conda enivornment with 
+  ```pip install django```
+
+  Activate Django enviroment with
+    ```conda activate djangoenv```
+
+   Run locally with
+    ```python manage.py runserver localhost:8000```
+
+   Access web application with
+    ```http://localhost:8000/e/khurah2/```
+
+   Run on mac1xa3.ca with
+    ```python manage.py runserver localhost:10059```
+
+   Access web application with
+    ```http://mac1xa3.ca/e/khurah2/```
+
+   Log in with ```TestUser```, password ```1234```
+#
+   
+## Objective 01
+### Description:
+- This feature is displayed in Project03/login/templates/signup.djhtml which is rendered by signup_view in Project03/login/views.py.
+- This feature handles the POST request send by the the form to create a New User.
+- It Displays a form to create a new user(i.e creating userinfo for new users).
+
+### Exceptions:
+- If the passwords don't match it throws an error .
+- Even if one of the conditions turn out to be False while creating a new account , it shows an error.
+- While on the login and signup page clicking on the top right corner button will give an error.
+
+## Objective 02
+### Description:
+- This Feature is displayed in Project03/social/templates/social_base.djhtml which renders the left_column used by messages.djhtml, people.djhtml and account.djhtml
+- The Feature displays User Information i.e employment, location, birthday and interests.
+- This Feature gets access to UserInfo by messages_view,people_view and account_view (present in: Project03/social/views.py) which renders above listed templates respectively.
+
+## Objective 03
+### Description:
+- This feature is displayed in Project03/social/templates/account.djhtml which is rendered by account_view in Project03/social/views.py
+- This feature handels the POST request send by the forms to change the user current password and a form for updating UserInfo.
+       
+### Exceptions:
+- If the date format entered is wrong then it will show an error.
+- If the user is tries to sumit the form for the first time without filling the date in it, it will show an error
+- The feilds in User info Updrage form:-
+    - Employment has character limit of 30 characters
+    - Location has character limit of 50 characters
+    - Interest has character limit of 30 characters
+
+## Objective 04
+### Description:
+- This feature is displayed in Project03/social/templates/people.djhtml which is rendered by people_view in Project03/social/views.py
+- This feature displays the list of all the users who are not friends with the current user using a for loop. Only a few amount of people are displayed at once(say 1) and it increases as the user presses the more button, the mechanism works with the help of a session variable.
+- It takes the POST request from to people.js in Project03/social/static which is accessed by more_ppl_view in Project03/social/views.py
+        
+### Exceptions:
+- In the situation where there is only current user and no other user or all the users are friend of the current user then the list will be empty and the more button will reload the page without showing any Users in the middle coloum of the page.
+
+## Objective 05
+### Description:
+- This feature is displayed in Project03/social/templates/people.djhtml which is rendered by people_view in Project03/social/views.py 
+- This feature sends the friend request to people who are not friends with the current user (The list of people displayed in objective 4). The button is diabled (using w3-diabled class feature) when the current user sends the friend request to other user.
+- This featutre also displays a list of people who send the friend request to the current user on the left side of People page which can be accessed by clicking on the people icon on the Navbar.
+- The Friend Request button sends the id of the user who sends the friend request to a JQuery event in people.js in Project03/social/static.
+
+### Exceptions:
+- If the current user sends the request to any user he or she can't cancel the request, until and enless the user to whom the request is sent declines the friend request.
+
+## Objective 06
+### Description:
+- This feature is displayed in Project03/social/templates/people.djhtml which helps the user to access the accept or decline friend request present in list of people who send the friend requets to the current user(list of people in objective 5).
+- This feature send a POST request to accept_decline_view with the appropriate button id(containg username of the user who accept the friend request).
+- This feature updates friends relation of Both Users in userinfo table when accept button is pressed. 
+
+## Objective 07
+### Description:
+- This feature is displayed by Project03/social/templates/messages.djhtml which is rendered by messages_view in Project03/social/views.py
+- This feature displays the list of the users who are friends with the current user on the right side of Message Page which can be accessed by clicking the essage icon on the Navbar.
+
+## Objective 08
+### Description:
+- This feature enables the user to Post their status on the Message Page. The page contains e contains a text field (id post-text) and button(id post-button for submitting posts.
+- The sumbit button in the post coloumb sends the post-id and post-text to post_submit_view in roject03/social/views.py, which handels the post submission by adding a new entry to the Post Model. 
+        
+### Exceptions: 
+- The text feild in Message page will has a maximum character limit of 280 characters
+
+## Objective 09
+### Description:
+- This feature is displayed by Project03/social/templates/messages.djhtml which is rendered by messages_view in Project03/social/views.py
+- This feature displays posts by the users order from newest to oldest(using order_by on the primary key) using a for loop. Only a few amount of posts are displayed at once(say 1) and it increases as the user presses the more button, the mechanism works with the help of a session variable.
+- The More button sends a POST request to more_post_view in Project03/social/views.py to display more posts.    
+        
+### Exceptions:
+- If there are no posts, the more button in middle coloum of Message Page will just reload the page when the button is clicked.
+
+## Objective 10
+### Description:
+- This feature is displayed by Project03/social/templates/messages.djhtml which is rendered by messages_view in Project03/social/views.py
+- This feature provides access to like a post by any user, even a post by the user itself but only for once i.e The button is diabled (using w3-diabled class feature) when the current user like the post and the like count is increased by one, the like count is displayed next to the like button and the count the initialized to 0(zero).
+
+## Objective 11
+### Description:
+- This objective helps in showcasing the functionality all the objectives that are implemented in Project. This feature is achieved by creating a variety of test users,posts and likes and by sending friend requests to different users.
+- This objective helps in populating the database with huge amount os data associated with features of the project.
+- The users that are used to achieve this objective are :-
+
+ UserNames | Passwords
+ --------- | ----------
+ TestUser  | 1234
+ User1     | Testing@1
+ User2     | Testing@2
+ User3     | Testing@3
+ User4     | Testing@4
+ User5     | Testing@5
+ User6     | Testing@6
+ User7     | Testing@7
+ User8     | Testing@8
+ User9     | Testing@9
+ User10    | Testing@10
+
