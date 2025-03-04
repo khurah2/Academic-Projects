@@ -1,4 +1,4 @@
-# Border Detection Assembly Project
+# String Manupilation
 
 Welcome to the Border Detection project! This guide will walk you through the steps to run the program and understand its features.
 
